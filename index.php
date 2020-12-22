@@ -27,43 +27,42 @@
         $mailP = strpos($_GET['mail'], '.');
 
         // variabile etá
-        $age = $_GET['age'];
+        $age = is_numeric($_GET['age']);
 
         // validitá di get
         $nome = false;
         $email = false;
-        $eta = false;
+        $eta = $age;
     ?>
 </head>
 <body>
+
+    <!-- tag php -->
+    <?php
+        // condizione validitá per il nome
+        if ($name > 3) {
+            $nome = true;
+        } else {
+            $nome = false;
+        }
+
+        // condizione validitá per email
+        if ($mailC === false || $mailP === false) {
+            $email = false;
+        } else {
+            $email = true;
+        }
+    ?>
+
+    <!-- tag per stampa html -->
     <h1>
         <?php
-            // condizione validitá per il nome
-            if ($name > 3) {
-                $nome = true;
-            } else {
-                $nome = false;
-            }
-            // var_dump($nome);
-
-            // condizione validitá per email
-            if ($mailC === false || $mailP === false) {
-                $email = false;
-            } else {
-                $email = true;
-            }
-            // var_dump($email);
-
-            //condizione validitá per etá
-
-
             // condizione di stampa per accesso
-            if ($nome === true && $email === true) {
+            if ($nome === true && $email === true && $eta === true) {
                 echo 'Accesso riuscito';
             } else {
                 echo 'Accesso negato';
             }
-
         ?>
     </h1>
 </body>
